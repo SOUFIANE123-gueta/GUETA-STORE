@@ -285,7 +285,7 @@ formData.append('price',total+' MAD');
 formData.append('quantity',checkoutProduct?(checkoutProduct.qty||1):cart.reduce((s,i)=>s+i.qty,0));
 formData.append('timestamp',new Date().toLocaleString('ar-MA'));
 
-fetch('https://script.google.com/macros/s/AKfycbzN9nD-thqWJdJ8FTSrkm7hKVRrwlJBaqDiHh7BTUiGGFImd4hUEAUPW0Iv0YjuWJ9EHQ/exec',{method:'POST',mode:'no-cors',body:formData}).then(()=>showSuccess(name.value.trim(),orderProduct.name,total)).catch(()=>showSuccess(name.value.trim(),orderProduct.name,total));
+fetch('https://script.google.com/macros/s/AKfycbzl0J_WT6v_bfoqN-CQpdRfGjF80ejdIeH3joJffgs5Q5GqwmW6bXQqXnG_Gio0jzejtQ/exec',{method:'POST',mode:'no-cors',body:formData}).then(()=>showSuccess(name.value.trim(),orderProduct.name,total)).catch(()=>showSuccess(name.value.trim(),orderProduct.name,total));
 }
 
 function showSuccess(customerName,productName,amount){
