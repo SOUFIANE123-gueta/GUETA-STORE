@@ -469,7 +469,7 @@ window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loa
 function renderProducts(){
 const grid=document.getElementById('productsGrid');
 grid.innerHTML=products.map(p=>`<div class="product-card reveal visible">
-<div class="product-image" onclick="openModal(${p.id})">
+<div class="product-image" onclick="window.location.href='${p.link}'"
 <img src="${p.image}" alt="${p.name}" loading="lazy">
 <div class="product-badges">
 ${p.badge==='new'?'<span class="badge badge-new">جديد</span>':''}
