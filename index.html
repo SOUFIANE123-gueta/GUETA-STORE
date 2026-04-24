@@ -181,7 +181,33 @@ footer{padding:60px 48px 30px;max-width:1400px;margin:0 auto;border-top:1px soli
 .cart-shipping{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--dark-border)}
 .cart-total{font-size:18px;font-weight:700;margin-bottom:20px}
 .cart-total-value{font-size:24px;font-weight:900;color:var(--orange)}
-.checkout-btn{width:100%;padding:16px;border-radius:14px;background:var(--orange);color:#fff;font-size:16px;font-weight:700;font-family:'Cairo';border:none;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:10px}
+.checkout-btn {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100% !important; /* هادي هي اللي غاتردو عرضي */
+    height: 55px !important; /* طول مناسب للضغط */
+    background: #FF6B2B !important; /* اللون الليموني */
+    color: #fff !important;
+    border-radius: 12px !important;
+    border: none !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    text-decoration: none !important;
+    margin: 15px 0 !important;
+    cursor: pointer !important;
+    box-shadow: 0 4px 15px rgba(255, 107, 43, 0.3) !important;
+    transition: 0.3s all ease !important;
+}
+
+/* هادي باش نضمنو أن الحاوية ديال الزر مكاتزيروش */
+.cart-footer {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 15px !important;
+    box-sizing: border-box !important;
+}
 .checkout-btn:hover{background:var(--orange-light);transform:translateY(-2px)}
 
 /* Modal */
