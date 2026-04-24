@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>سماعة بلوتوث محمولة مقاومة للماء | بلوكس ستور</title>
+<meta name="description" content="سماعة بلوتوث محمولة بصوت محيطي 360 درجة وبطارية تدوم طويلاً. تصميم مقاوم للماء والغبار مثالي للرحلات والشاطئ. اطلبها الآن.">
+<meta name="keywords" content="سماعة بلوتوث, مكبر صوت, سماعة محمولة, سماعة مقاومة للماء, بلوكس ستور, إكسسوارات تقنية">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{--orange:#FF6B2B;--dark:#0a0a0a;--dark-card:#141414;--dark-border:#222;--white:#fff;--gray:#888}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Cairo',sans-serif;background:var(--dark);color:var(--white);line-height:1.7}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;display:block}
+
+/* Navbar */
+nav{position:sticky;top:0;z-index:100;padding:15px 5%;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--dark-border);display:flex;justify-content:space-between;align-items:center}
+.nav-logo{font-size:24px;font-weight:900;color:var(--white)}.nav-logo span{color:var(--orange)}
+.back-btn{color:var(--gray);font-size:14px;cursor:pointer;transition:.3s}
+.back-btn:hover{color:var(--orange)}
+
+/* Product Section */
+.product-container{max-width:1200px;margin:40px auto;padding:0 20px;display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.product-gallery{border-radius:20px;overflow:hidden;position:relative;background:#1a1a1a}
+.product-gallery img{width:100%;height:auto;border-radius:20px}
+.product-badge{position:absolute;top:20px;right:20px;background:var(--orange);color:#fff;padding:5px 15px;border-radius:8px;font-weight:700;font-size:14px}
+
+.product-info{display:flex;flex-direction:column;gap:20px}
+.breadcrumb{color:var(--gray);font-size:13px;margin-bottom:10px}
+.breadcrumb a{color:var(--gray)}
+.breadcrumb a:hover{color:var(--orange)}
+.product-title{font-size:36px;font-weight:900;line-height:1.2}
+.rating{display:flex;align-items:center;gap:5px;color:#f59e0b;font-size:14px}
+.price-box{display:flex;align-items:center;gap:15px}
+.current-price{font-size:32px;font-weight:900;color:var(--orange)}
+.old-price{font-size:20px;color:var(--gray);text-decoration:line-through}
+.short-desc{color:var(--gray);font-size:16px;line-height:1.8}
+
+.features-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px;margin:10px 0}
+.feature-item{display:flex;align-items:center;gap:10px;font-size:14px;background:var(--dark-card);padding:10px;border-radius:8px;border:1px solid var(--dark-border)}
+.feature-icon{font-size:18px}
+
+.cta-group{display:flex;gap:15px;margin-top:20px}
+.btn-buy{flex:1;padding:16px;background:var(--orange);color:#fff;border:none;border-radius:12px;font-size:18px;font-weight:800;font-family:'Cairo';cursor:pointer;transition:.3s;text-align:center}
+.btn-buy:hover{background:#e85a1c;transform:translateY(-2px)}
+.btn-wishlist{width:60px;background:var(--dark-card);border:1px solid var(--dark-border);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:24px;transition:.3s}
+.btn-wishlist:hover{border-color:var(--orange);color:var(--orange)}
+
+/* Tabs */
+.tabs-section{max-width:1200px;margin:60px auto;padding:0 20px}
+.tabs-header{display:flex;gap:30px;border-bottom:1px solid var(--dark-border);margin-bottom:30px}
+.tab-btn{padding:15px 0;color:var(--gray);font-weight:700;cursor:pointer;border-bottom:2px solid transparent;transition:.3s;font-size:16px}
+.tab-btn.active{color:var(--white);border-color:var(--orange)}
+.tab-content{display:none;animation:fadeIn .3s ease}
+.tab-content.active{display:block}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* Reviews & FAQ */
+.review-card{background:var(--dark-card);padding:20px;border-radius:12px;margin-bottom:15px;border:1px solid var(--dark-border)}
+.review-stars{color:#f59e0b;margin-bottom:5px}
+.review-author{font-weight:700;font-size:14px;margin-bottom:5px}
+.faq-item{border-bottom:1px solid var(--dark-border);padding:20px 0}
+.faq-q{font-weight:700;cursor:pointer;display:flex;justify-content:space-between}
+.faq-a{color:var(--gray);margin-top:10px;display:none;font-size:15px}
+.faq-item.open .faq-a{display:block}
+
+/* Similar Products */
+.similar-section{padding:60px 20px;max-width:1200px;margin:0 auto}
+.section-title{font-size:28px;font-weight:800;margin-bottom:30px;text-align:center}
+.similar-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+.similar-card{background:var(--dark-card);border-radius:16px;overflow:hidden;border:1px solid var(--dark-border);transition:.3s}
+.similar-card:hover{transform:translateY(-5px)}
+.similar-card img{width:100%;aspect-ratio:1;object-fit:cover}
+.similar-info{padding:15px}
+.similar-name{font-size:14px;font-weight:700;margin-bottom:5px}
+.similar-price{color:var(--orange);font-weight:800}
+
+@media(max-width:768px){
+.product-container{grid-template-columns:1fr}
+.similar-grid{grid-template-columns:repeat(2,1fr)}
+.tabs-header{gap:15px}
+.tab-btn{font-size:14px}
+}
+</style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+<a href="index.html" class="nav-logo">بلوكس<span>ستور</span></a>
+<a href="index.html" class="back-btn">← العودة للمتجر</a>
+</nav>
+
+<!-- Product Hero -->
+<div class="product-container">
+<div class="product-gallery">
+<img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=600&h=700&fit=crop" alt="سماعة بلوتوث محمولة">
+<div class="product-badge">خصم 21%</div>
+</div>
+<div class="product-info">
+<div class="breadcrumb"><a href="index.html">الرئيسية</a> / <a href="category.html?cat=accessories">إكسسوارات</a> / سماعة بلوتوث</div>
+<h1 class="product-title">سماعة بلوتوث محمولة مقاومة للماء</h1>
+<div class="rating">★★★★★ <span style="color:var(--gray)">(189 تقييم)</span></div>
+<div class="price-box">
+<span class="current-price">549 درهم</span>
+<span class="old-price">699 درهم</span>
+</div>
+<p class="short-desc">
+استمتع بموسيقاك في أي مكان مع سماعة بلوتوث محمولة قوية ومدمجة. بفضل تقنية الصوت المحيطي 360 درجة، ستملأ الغرفة بصوت نقي وغني بالبيز (Bass). تصميمها المقاوم للماء والغبار يجعلها الرفيق المثالي للرحلات، الشاطئ، وحفلات الحدائق. بطارية تدوم حتى 12 ساعة من التشغيل المتواصل.
+</p>
+
+<div class="features-grid">
+<div class="feature-item"><span class="feature-icon">🔊</span> صوت محيطي 360°</div>
+<div class="feature-item"><span class="feature-icon">💧</span> مقاومة للماء IPX7</div>
+<div class="feature-item"><span class="feature-icon">🔋</span> بطارية 12 ساعة</div>
+<div class="feature-item"><span class="feature-icon">📞</span> ميكروفون للمكالمات</div>
+</div>
+
+<div class="cta-group">
+<button class="btn-buy" onclick="buyNow()">🛒 أضف للسلة - اطلب الآن</button>
+<button class="btn-wishlist">♡</button>
+</div>
+</div>
+</div>
+
+<!-- Details Tabs -->
+<div class="tabs-section">
+<div class="tabs-header">
+<div class="tab-btn active" onclick="openTab(event, 'desc')">الوصف والمميزات</div>
+<div class="tab-btn" onclick="openTab(event, 'specs')">المواصفات</div>
+<div class="tab-btn" onclick="openTab(event, 'reviews')">آراء العملاء</div>
+<div class="tab-btn" onclick="openTab(event, 'faq')">أسئلة شائعة</div>
+</div>
+
+<div id="desc" class="tab-content active">
+<h3 style="margin-bottom:15px;font-size:22px">قوة الصوت في جيبك</h3>
+<p style="color:var(--gray);margin-bottom:20px;line-height:1.8">
+صممت هذه السماعة لتكون صلب كل تجربة صوتية لديك. سواء كنت في حمام السباحة، تتسلق الجبال، أو مجرد الاسترخاء في الحديقة، فإن السماعة توفر صوتاً صافياً وعالي النقاء لا يتناسب مع حجمها الصغير. الميزة الأبرز هي مقاومتها الكاملة للماء، فلا داعي للقلق من رشات الماء أو المطر.
+</p>
+<h4 style="margin-bottom:10px">لماذا تختار هذه السماعة؟</h4>
+<ul style="list-style:none;color:var(--gray);padding:0">
+<li style="margin-bottom:10px">✅ <strong>ربط مزدوج:</strong> يمكنك توصيل سماعتين معاً للحصول على صوت ستيريو مذهل (Party Mode).</li>
+<li style="margin-bottom:10px">✅ <strong>مكالمات واضحة:</strong> استقبل المكالمات الهاتفية بوضوح تام بفضل الميكروفون المدمج.</li>
+<li style="margin-bottom:10px">✅ <strong>توصيل سريع:</strong> تقنية بلوتوث 5.0 تضمن اتصالاً مستقراً وسريعاً مع جميع الأجهزة.</li>
+</ul>
+</div>
+
+<div id="specs" class="tab-content">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+<div style="padding:15px;background:var(--dark-card);border-radius:10px">
+<strong>البلوتوث:</strong><br><span style="color:var(--gray)">الإصدار 5.0</span>
+</div>
+<div style="padding:15px;background:var(--dark-card);border-radius:10px">
+<strong>عمر البطارية:</strong><br><span style="color:var(--gray)">12 ساعة (حسب مستوى الصوت)</span>
+</div>
+<div style="padding:15px;background:var(--dark-card);border-radius:10px">
+<strong>وقت الشحن:</strong><br><span style="color:var(--gray)">3 ساعات (USB-C)</span>
+</div>
+<div style="padding:15px;background:var(--dark-card);border-radius:10px">
+<strong>الحماية:</strong><br><span style="color:var(--gray)">IPX7 (مقاومة للماء والغبار)</span>
+</div>
+</div>
+</div>
+
+<div id="reviews" class="tab-content">
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
+<div class="review-author">سعيد المنصوري - أكادير</div>
+<p style="color:var(--gray)">السماعة قوية بزاف رغم حجمها الصغير. الباطيري كتحمل فعلا نهار كامل فالحفلة.</p>
+</div>
+<div class="review-card">
+<div class="review-stars">★★★★★</div>
+<div class="review-author">أمينة بوزيان - فاس</div>
+<p style="color:color:var(--gray)">جربتوها فحمام السباحة وخدمت مزيان، ما دخلش ليها الما.</p>
+</div>
+</div>
+
+<div id="faq" class="tab-content">
+<div class="faq-item" onclick="toggleFaq(this)">
+<div class="faq-q">هل يمكنني السباحة بالسماعة؟ <span>+</span></div>
+<div class="faq-a">السماعة مقاومة للماء (IPX7) مما يعني أنها تتحمل الغمر في الماء لفترة وجيزة وبقطر معين، لكن لا ننصح باستخدامها تحت الماء بشكل كامل أثناء السباحة العميقة لضمان سلامة الدوائر الإلكترونية.</div>
+</div>
+<div class="faq-item" onclick="toggleFaq(this)">
+<div class="faq-q">هل تدعم كروت الذاكرة SD؟ <span>+</span></div>
+<div class="faq-a">نعم، تحتوي السماعة على منفذ لكروت الذاكرة (Micro SD) يمكنك من خلاله تشغيل الموسيقى مباشرة دون الحاجة للهاتف.</div>
+</div>
+<div class="faq-item" onclick="toggleFaq(this)">
+<div class="faq-q">ما هو مدى الاتصال بالبلوتوث؟ <span>+</span></div>
+<div class="faq-a">مدى الاتصال يصل إلى 10-15 متراً في الأماكن المفتوحة دون عوائق.</div>
+</div>
+</div>
+</div>
+
+<!-- Similar Products -->
+<div class="similar-section">
+<h2 class="section-title">إكسسوارات تقنية مكملة</h2>
+<div class="similar-grid">
+<a href="product-headphones.html" class="similar-card">
+<img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&h=300&fit=crop" alt="سماعات برو">
+<div class="similar-info">
+<div class="similar-name">سماعات لاسلكية بتقنية ANC</div>
+<div class="similar-price">449 درهم</div>
+</div>
+</a>
+<a href="product-watch.html" class="similar-card">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=300&h=300&fit=crop" alt="ساعة ذكية">
+<div class="similar-info">
+<div class="similar-name">ساعة ذكية برو</div>
+<div class="similar-price">1299 درهم</div>
+</div>
+</a>
+<a href="product-mug.html" class="similar-card">
+<img src="https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=300&h=300&fit=crop" alt="كوب سيراميك">
+<div class="similar-info">
+<div class="similar-name">كوب سيراميك مينيمال</div>
+<div class="similar-price">129 درهم</div>
+</div>
+</a>
+</div>
+</div>
+
+<script>
+function openTab(evt, tabName) {
+document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
+document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+document.getElementById(tabName).classList.add('active');
+evt.currentTarget.classList.add('active');
+}
+function toggleFaq(el) { el.classList.toggle('open'); }
+
+// Buy Now Function
+function buyNow() {
+// Save specific product data to localStorage
+const productData = {
+id: 10,
+name: 'سماعة بلوتوث محمولة مقاومة للماء',
+price: 549,
+oldPrice: 699,
+image: 'https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500&h=500&fit=crop',
+qty: 1
+};
+localStorage.setItem('blox_checkout', JSON.stringify(productData));
+// Redirect to checkout
+window.location.href = 'checkout.html';
+}
+</script>
+</body>
+</html>
+
