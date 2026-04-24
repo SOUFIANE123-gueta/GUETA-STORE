@@ -465,11 +465,15 @@ try{cart=JSON.parse(localStorage.getItem('blox_cart'))}catch(e){cart=[]}
 }
 
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden')},1800);renderProducts();updateCart()});
-
+function goToProduct(link) {
+  if (link) {
+    window.location.href = link;
+  }
+}
 function renderProducts(){
 const grid=document.getElementById('productsGrid');
 grid.innerHTML=products.map(p=>`<div class="product-card reveal visible">
-<div class="product-image" onclick="window.location.href='${p.link}'">
+ <div class="product-card" onclick="goToProduct('${p.link || ''}')" style="cursor:pointer;">
 <img src="${p.image}" alt="${p.name}" loading="lazy">
 <div class="product-badges">
 ${p.badge==='new'?'<span class="badge badge-new">جديد</span>':''}
