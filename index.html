@@ -181,31 +181,7 @@ footer{padding:60px 48px 30px;max-width:1400px;margin:0 auto;border-top:1px soli
 .cart-shipping{margin-bottom:16px;padding-bottom:16px;border-bottom:1px solid var(--dark-border)}
 .cart-total{font-size:18px;font-weight:700;margin-bottom:20px}
 .cart-total-value{font-size:24px;font-weight:900;color:var(--orange)}
-.checkout-btn {
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 100% !important; /* هادي هي اللي غاتردو عرضي */
-    height: 55px !important; /* طول مناسب للضغط */
-    background: #FF6B2B !important; /* اللون الليموني */
-    color: #fff !important;
-    border-radius: 12px !important;
-    border: none !important;
-    font-size: 18px !important;
-    font-weight: 700 !important;
-    text-decoration: none !important;
-    margin: 15px 0 !important;
-    cursor: pointer !important;
-    box-shadow: 0 4px 15px rgba(255, 107, 43, 0.3) !important;
-    transition: 0.3s all ease !important;
-}
-.cart-footer {
-    display: flex !important;
-    flex-direction: column !important;
-    width: 100% !important;
-    padding: 15px !important;
-    box-sizing: border-box !important;
-}
+.checkout-btn{width:100%;padding:16px;border-radius:14px;background:var(--orange);color:#fff;font-size:16px;font-weight:700;font-family:'Cairo';border:none;cursor:pointer;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:10px}
 .checkout-btn:hover{background:var(--orange-light);transform:translateY(-2px)}
 
 /* Modal */
@@ -431,7 +407,7 @@ footer{padding:60px 48px 30px;max-width:1400px;margin:0 auto;border-top:1px soli
 <div class="cart-subtotal"><span class="cart-subtotal-label">المجموع الفرعي</span><span class="cart-subtotal-value" id="cartSubtotal">0 درهم</span></div>
 <div class="cart-shipping"><span class="cart-shipping-label">الشحن</span><span class="cart-shipping-value" id="cartShipping" style="color:var(--success)">مجاني</span></div>
 <div class="cart-total"><span>المجموع</span><span class="cart-total-value" id="cartTotal">0 درهم</span></div>
-<button class="product-action-btn" onclick="openModal(${p.id})">
+<button class="checkout-btn" onclick="window.location='checkout.html'">
 إتمام الشراء
 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
 </button>
@@ -495,7 +471,7 @@ window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loa
 function renderProducts(){
 const grid=document.getElementById('productsGrid');
 grid.innerHTML=products.map(p=>`<div class="product-card reveal visible">
-<div class="product-image" onclick="openModal(${p.id})">
+<button class="product-action-btn" onclick="event.stopPropagation(); window.location.href='watch.html'">👁️</button>
 <img src="${p.image}" alt="${p.name}" loading="lazy">
 <div class="product-badges">
 ${p.badge==='new'?'<span class="badge badge-new">جديد</span>':''}
@@ -504,7 +480,7 @@ ${p.badge==='hot'?'<span class="badge badge-hot">🔥 رائج</span>':''}
 </div>
 <div class="product-actions">
 <button class="product-action-btn" onclick="event.stopPropagation();showToast('تمت الإضافة للمفضلة ❤️')">♡</button>
-<button class="product-action-btn" onclick="event.stopPropagation(); openModal(${p.id})">👁️</button>
+<button class="product-action-btn" onclick="event.stopPropagation();openModal(${p.id})">👁</button>
 </div>
 </div>
 <div class="product-info">
