@@ -471,7 +471,7 @@ window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loa
 function renderProducts(){
 const grid=document.getElementById('productsGrid');
 grid.innerHTML=products.map(p=>`<div class="product-card reveal visible">
-<button class="product-action-btn" onclick="event.stopPropagation(); window.location.href='watch.html'">👁️</button>
+<div class="product-image" onclick="openModal(${p.id})">
 <img src="${p.image}" alt="${p.name}" loading="lazy">
 <div class="product-badges">
 ${p.badge==='new'?'<span class="badge badge-new">جديد</span>':''}
@@ -480,7 +480,7 @@ ${p.badge==='hot'?'<span class="badge badge-hot">🔥 رائج</span>':''}
 </div>
 <div class="product-actions">
 <button class="product-action-btn" onclick="event.stopPropagation();showToast('تمت الإضافة للمفضلة ❤️')">♡</button>
-<button class="product-action-btn" onclick="event.stopPropagation();openModal(${p.id})">👁</button>
+<button class="product-action-btn" onclick="event.stopPropagation(); openModal(${p.id})">👁️</button>
 </div>
 </div>
 <div class="product-info">
