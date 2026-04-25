@@ -276,7 +276,12 @@ const products=[
 ];
 
 let cart=[];let modalProduct=null;let modalQty=1;let currentCat='all';
-if(localStorage.getItem('blox_cart')){try{cart=JSON.parse(localStorage.getItem('blox_cart'))}catch(e){cart=[]}}
+function goToProduct(link) {
+  if (link) {
+    window.location.href = link;
+  }
+}
+  if(localStorage.getItem('blox_cart')){try{cart=JSON.parse(localStorage.getItem('blox_cart'))}catch(e){cart=[]}}
 
 window.addEventListener('load',()=>{setTimeout(()=>{document.getElementById('loader').classList.add('hidden')},1500);
 const params=new URLSearchParams(window.location.search);
@@ -298,7 +303,7 @@ const filtered=cat==='all'?products:products.filter(p=>p.category===cat);
 const grid=document.getElementById('productsGrid');
 if(filtered.length===0){grid.innerHTML='<div class="no-products"><div class="icon">🔍</div><p>لا توجد منتجات في هذا القسم حالياً</p></div>';return;}
 grid.innerHTML=filtered.map(p=>`<div class="product-card">
-<div class="product-image" onclick="openModal(${p.id})">
+<div class="product-image" onclick="goToProduct('${p.link}')">
 <img src="${p.image}" alt="${p.name}" loading="lazy">
 <div class="product-badges">
 ${p.badge==='new'?'<span class="badge badge-new">جديد</span>':''}
@@ -315,7 +320,7 @@ ${p.badge==='hot'?'<span class="badge badge-hot">🔥 رائج</span>':''}
 <h3 class="product-name">${p.name}</h3>
 <div class="product-rating"><div class="stars">${renderStars(p.rating)}</div><span class="rating-count">(${p.reviews})</span></div>
 <div class="product-price"><span class="current-price">${p.price} درهم</span>${p.oldPrice?`<span class="old-price">${p.oldPrice} درهم</span>`:''}${p.discount?`<span class="discount">-${p.discount}%</span>`:''}</div>
-<button class="add-to-cart-btn" onclick="addToCart(${p.id})">🛒 أضف للسلة</button>
+<button class="add-to-cart-btn" onclick="goToProduct('${p.link}')">🛒 أضف للسلة</button>
 </div></div>`).join('');
 }
 
