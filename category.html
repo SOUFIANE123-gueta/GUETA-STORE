@@ -258,7 +258,11 @@ nav{position:sticky;top:0;z-index:1000;padding:16px 48px;display:flex;justify-co
 <div class="toast-icon">✓</div>
 <div class="toast-text" id="toastText">تمت الإضافة للسلة</div>
 </div>
-
+function goToProduct(link) {
+  if (link) {
+    window.location.href = link;
+  }
+}
 <script>
 const products=[
 {id:1,name:"سترة بريميوم محشوة",category:"clothing",price:899,oldPrice:1299,image:"https://images.unsplash.com/photo-1548126032-079a0fb0099d?w=500&h=500&fit=crop",rating:4.8,reviews:124,badge:"sale",discount:31,desc:"سترة محشوة دافئة مع حماية من الماء",sizes:["S","M","L","XL"]},
@@ -297,7 +301,7 @@ const filtered=cat==='all'?products:products.filter(p=>p.category===cat);
 const grid=document.getElementById('productsGrid');
 if(filtered.length===0){grid.innerHTML='<div class="no-products"><div class="icon">🔍</div><p>لا توجد منتجات في هذا القسم حالياً</p></div>';return;}
 grid.innerHTML=filtered.map(p=>`<div class="product-card">
-<div class="product-image" onclick="openModal(${p.id})">
+<div class="product-image" onclick="goToProduct('${p.link}')"
 <img src="${p.image}" alt="${p.name}" loading="lazy">
 <div class="product-badges">
 ${p.badge==='new'?'<span class="badge badge-new">جديد</span>':''}
@@ -314,7 +318,7 @@ ${p.badge==='hot'?'<span class="badge badge-hot">🔥 رائج</span>':''}
 <h3 class="product-name">${p.name}</h3>
 <div class="product-rating"><div class="stars">${renderStars(p.rating)}</div><span class="rating-count">(${p.reviews})</span></div>
 <div class="product-price"><span class="current-price">${p.price} درهم</span>${p.oldPrice?`<span class="old-price">${p.oldPrice} درهم</span>`:''}${p.discount?`<span class="discount">-${p.discount}%</span>`:''}</div>
-<button class="add-to-cart-btn" onclick="addToCart(${p.id})">🛒 أضف للسلة</button>
+<button class="add-to-cart-btn" onclick="goToProduct('${p.link}')">🛒 أضف للسلة</button>
 </div></div>`).join('');
 }
 
