@@ -503,22 +503,10 @@ ${p.badge==='hot'?'<span class="badge badge-hot">🔥 رائج</span>':''}
 <h3 class="product-name">${p.name}</h3>
 <div class="product-rating"><div class="stars">${renderStars(p.rating)}</div><span class="rating-count">(${p.reviews})</span></div>
 <div class="product-price"><span class="current-price">${p.price} درهم</span>${p.oldPrice?`<span class="old-price">${p.oldPrice} درهم</span>`:''}${p.discount?`<span class="discount">-${p.discount}%</span>`:''}</div>
-<div class="product-action">
-  <button class="add-to-cart-btn" onclick="addToCart(${p.id})">أضف للسلة</button>
-</div>
+<button class="add-to-cart-btn" onclick="addToCart(${p.id})">🛒 أضف للسلة</button>
 </div></div>`).join('');
 }
-.product-card {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-.product-info {
-  flex-grow: 1;
-}
-.product-action {
-  margin-top: auto;
-}
+
 function renderStars(r){let s='';for(let i=1;i<=5;i++)s+=(i<=Math.floor(r))?'★':'☆';return s}
 
 function addToCart(id){
