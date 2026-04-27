@@ -316,7 +316,6 @@ document.body.style.overflow='hidden';
 function closeSuccess(){document.getElementById('successOverlay').classList.remove('active');document.body.style.overflow='auto';window.location.href='index.html'}
 function toggleMobile(){document.getElementById('mobileToggle').classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':'auto'}
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
-<script>
 document.addEventListener('DOMContentLoaded', function() {
     const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
     if (selectedProduct && selectedProduct.options) {
