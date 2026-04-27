@@ -308,20 +308,28 @@ function toggleMobile(){document.getElementById('mobileToggle').classList.toggle
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const hideMyLoader = () => {
+    // 1. أمر إجباري باش تحيد الشاشة الكحلة مهما وقع
+    const forceHideLoader = () => {
         const loader = document.querySelector('.loader');
         if (loader) {
             loader.style.opacity = '0';
             setTimeout(() => { loader.style.display = 'none'; }, 500);
         }
     };
+
     try {
-        const productData = localStorage.getItem('blox_checkout');
-                if (productData) {
-            const product = JSON.parse(productData);
-                        if (product && product.options) {
+        // 2. كنجربو نجبدو المعلومات من كاع الصناديق الممكنة
+        const data = localStorage.getItem('selectedProduct') || localStorage.getItem('blox_checkout');
+        
+        if (data) {
+            const product = JSON.parse(data);
+            
+            // 3. كنشوفو واش كاينين الـ Options
+            if (product && product.options) {
                 const opts = product.options;
-                if (opts.hasSize && opts.sizes && Array.isArray(opts.sizes)) {
+
+                // إظهار المقاس
+                if (opts.hasSize && opts.sizes) {
                     const sBox = document.getElementById('size-box');
                     const sSelect = document.getElementById('p-size');
                     if (sBox && sSelect) {
@@ -329,7 +337,9 @@ document.addEventListener('DOMContentLoaded', function() {
                         sSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
                     }
                 }
-                if (opts.hasColor && opts.colors && Array.isArray(opts.colors)) {
+
+                // إظهار اللون
+                if (opts.hasColor && opts.colors) {
                     const cBox = document.getElementById('color-box');
                     const cSelect = document.getElementById('p-color');
                     if (cBox && cSelect) {
@@ -340,16 +350,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     } catch (err) {
-        console.error("Error loading variants:", err);
+        console.log("Error but don't freeze:", err);
     }
-    hideMyLoader();
+
+    // 4. حيد اللودر فـ اللخر
+    forceHideLoader();
 });
-window.onload = function() {
-    const loader = document.querySelector('.loader');
-    if (loader && loader.style.display !== 'none') {
-        loader.style.display = 'none';
-    }
-};
 </script>
 </body>
 </html>
