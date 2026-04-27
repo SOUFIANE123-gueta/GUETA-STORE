@@ -324,8 +324,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const selectedProduct = JSON.parse(productData);
             if (selectedProduct && selectedProduct.options) {
                 const opts = selectedProduct.options;
-
-                // إظهار خانة المقاس
                 if (opts.hasSize && opts.sizes) {
                     const sizeBox = document.getElementById('size-box');
                     const sizeSelect = document.getElementById('p-size');
@@ -334,7 +332,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
                     }
                 }
-                // إظهار خانة اللون
                 if (opts.hasColor && opts.colors) {
                     const colorBox = document.getElementById('color-box');
                     const colorSelect = document.getElementById('p-color');
@@ -349,7 +346,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Error logic:", e);
     }
 });
-// إخفاء الـ Loader ضروري باش ما تبقاش الشاشة كحلة
 window.onload = function() {
     const loader = document.querySelector('.loader');
     if (loader) {
