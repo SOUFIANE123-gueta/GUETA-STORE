@@ -325,34 +325,42 @@ document.addEventListener('DOMContentLoaded', function() {
             if (selectedProduct && selectedProduct.options) {
                 const opts = selectedProduct.options;
                 if (opts.hasSize && opts.sizes) {
-                    const sizeBox = document.getElementById('size-box');
-                    const sizeSelect = document.getElementById('p-size');
-                    if (sizeBox && sizeSelect) {
-                        sizeBox.style.display = 'block';
-                        sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+                    const sBox = document.getElementById('size-box');
+                    const sSelect = document.getElementById('p-size');
+                    if (sBox && sSelect) {
+                        sBox.style.display = 'block';
+                        sSelect.innerHTML = opts.sizes.map(function(s) {
+                            return '<option value="' + s + '">' + s + '</option>';
+                        }).join('');
                     }
                 }
                 if (opts.hasColor && opts.colors) {
-                    const colorBox = document.getElementById('color-box');
-                    const colorSelect = document.getElementById('p-color');
-                    if (colorBox && colorSelect) {
-                        colorBox.style.display = 'block';
-                        colorSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+                    const cBox = document.getElementById('color-box');
+                    const cSelect = document.getElementById('p-color');
+                    if (cBox && cSelect) {
+                        cBox.style.display = 'block';
+                        cSelect.innerHTML = opts.colors.map(function(c) {
+                            return '<option value="' + c + '">' + c + '</option>';
+                        }).join('');
                     }
                 }
             }
         }
     } catch (e) {
-        console.log("Error logic:", e);
+        console.log("Error details:", e);
+    }
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(function() {
+            loader.style.display = 'none';
+        }, 500);
     }
 });
 window.onload = function() {
     const loader = document.querySelector('.loader');
-    if (loader) {
-        loader.style.opacity = '0';
-        setTimeout(() => {
-            loader.style.display = 'none';
-        }, 500);
+    if (loader && loader.style.display !== 'none') {
+        loader.style.display = 'none';
     }
 };
 </script>
