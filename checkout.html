@@ -318,37 +318,40 @@ function toggleMobile(){document.getElementById('mobileToggle').classList.toggle
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // كنجيبو المنتج من الذاكرة
-    const productData = localStorage.getItem('selectedProduct');
-    
-    if (productData) {
-        const selectedProduct = JSON.parse(productData);
-        
-        if (selectedProduct.options) {
-            const opts = selectedProduct.options;
+    try {
+        const productData = localStorage.getItem('selectedProduct');
+        if (productData) {
+            const selectedProduct = JSON.parse(productData);
+            if (selectedProduct && selectedProduct.options) {
+                const opts = selectedProduct.options;
 
-            // إظهار خانة المقاس
-            if (opts.hasSize && opts.sizes) {
-                const sizeBox = document.getElementById('size-box');
-                const sizeSelect = document.getElementById('p-size');
-                if (sizeBox && sizeSelect) {
-                    sizeBox.style.display = 'block';
-                    sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+                // إظهار خانة المقاس
+                if (opts.hasSize && opts.sizes) {
+                    const sizeBox = document.getElementById('size-box');
+                    const sizeSelect = document.getElementById('p-size');
+                    if (sizeBox && sizeSelect) {
+                        sizeBox.style.display = 'block';
+                        sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+                    }
                 }
-            }
 
-            // إظهار خانة اللون
-            if (opts.hasColor && opts.colors) {
-                const colorBox = document.getElementById('color-box');
-                const colorSelect = document.getElementById('p-color');
-                if (colorBox && colorSelect) {
-                    colorBox.style.display = 'block';
-                    colorSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+                // إظهار خانة اللون
+                if (opts.hasColor && opts.colors) {
+                    const colorBox = document.getElementById('color-box');
+                    const colorSelect = document.getElementById('p-color');
+                    if (colorBox && colorSelect) {
+                        colorBox.style.display = 'block';
+                        colorSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+                    }
                 }
             }
         }
+    } catch (e) {
+        console.log("Error logic:", e);
     }
 });
+
+// إخفاء الـ Loader ضروري باش ما تبقاش الشاشة كحلة
 window.onload = function() {
     const loader = document.querySelector('.loader');
     if (loader) {
