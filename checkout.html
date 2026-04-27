@@ -334,7 +334,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
                     }
                 }
-
                 // إظهار خانة اللون
                 if (opts.hasColor && opts.colors) {
                     const colorBox = document.getElementById('color-box');
@@ -350,7 +349,6 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log("Error logic:", e);
     }
 });
-
 // إخفاء الـ Loader ضروري باش ما تبقاش الشاشة كحلة
 window.onload = function() {
     const loader = document.querySelector('.loader');
