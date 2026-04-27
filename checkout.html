@@ -316,24 +316,48 @@ document.body.style.overflow='hidden';
 function closeSuccess(){document.getElementById('successOverlay').classList.remove('active');document.body.style.overflow='auto';window.location.href='index.html'}
 function toggleMobile(){document.getElementById('mobileToggle').classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':'auto'}
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-    const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
-    if (selectedProduct && selectedProduct.options) {
-        const opts = selectedProduct.options;
-        if (opts.hasSize) {
-            const sizeBox = document.getElementById('size-box');
-            const sizeSelect = document.getElementById('p-size');
-            sizeBox.style.display = 'block';
-            sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
-        }
-        if (opts.hasColor) {
-            const colorBox = document.getElementById('color-box');
-            const colorSelect = document.getElementById('p-color');
-            colorBox.style.display = 'block';
-            colorSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+    // كنجيبو المنتج من الذاكرة
+    const productData = localStorage.getItem('selectedProduct');
+    
+    if (productData) {
+        const selectedProduct = JSON.parse(productData);
+        
+        if (selectedProduct.options) {
+            const opts = selectedProduct.options;
+
+            // إظهار خانة المقاس
+            if (opts.hasSize && opts.sizes) {
+                const sizeBox = document.getElementById('size-box');
+                const sizeSelect = document.getElementById('p-size');
+                if (sizeBox && sizeSelect) {
+                    sizeBox.style.display = 'block';
+                    sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+                }
+            }
+
+            // إظهار خانة اللون
+            if (opts.hasColor && opts.colors) {
+                const colorBox = document.getElementById('color-box');
+                const colorSelect = document.getElementById('p-color');
+                if (colorBox && colorSelect) {
+                    colorBox.style.display = 'block';
+                    colorSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+                }
+            }
         }
     }
 });
+window.onload = function() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(() => {
+            loader.style.display = 'none';
+        }, 500);
+    }
+};
 </script>
 </body>
 </html>
