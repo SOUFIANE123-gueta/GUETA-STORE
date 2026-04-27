@@ -307,26 +307,63 @@ function closeSuccess(){document.getElementById('successOverlay').classList.remo
 function toggleMobile(){document.getElementById('mobileToggle').classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':'auto'}
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-    const productData = localStorage.getItem('blox_checkout');
-    if (productData) {
-        const product = JSON.parse(productData);
-        // 2. كنشوفو واش فيه Options
-        if (product.options) {
-            // إلا كان فيه المقاسات
-            if (product.options.hasSize && product.options.sizes) {
-                document.getElementById('size-box').style.display = 'block';
-                const sSelect = document.getElementById('p-size');
-                sSelect.innerHTML = product.options.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
-            }
-            if (product.options.hasColor && product.options.colors) {
-                document.getElementById('color-box').style.display = 'block';
-                const cSelect = document.getElementById('p-color');
-                cSelect.innerHTML = product.options.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. أمر إخفاء اللودر (هادي هي أهم حاجة باش ما تتبلوكاش)
+    const hideMyLoader = () => {
+        const loader = document.querySelector('.loader');
+        if (loader) {
+            loader.style.opacity = '0';
+            setTimeout(() => { loader.style.display = 'none'; }, 500);
+        }
+    };
+
+    try {
+        // 2. جلب البيانات
+        const productData = localStorage.getItem('blox_checkout');
+        
+        if (productData) {
+            const product = JSON.parse(productData);
+            
+            // 3. التأكد من وجود options قبل العمل عليها
+            if (product && product.options) {
+                const opts = product.options;
+
+                // إظهار المقاسات
+                if (opts.hasSize && opts.sizes && Array.isArray(opts.sizes)) {
+                    const sBox = document.getElementById('size-box');
+                    const sSelect = document.getElementById('p-size');
+                    if (sBox && sSelect) {
+                        sBox.style.display = 'block';
+                        sSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+                    }
+                }
+
+                // إظهار الألوان
+                if (opts.hasColor && opts.colors && Array.isArray(opts.colors)) {
+                    const cBox = document.getElementById('color-box');
+                    const cSelect = document.getElementById('p-color');
+                    if (cBox && cSelect) {
+                        cBox.style.display = 'block';
+                        cSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+                    }
+                }
             }
         }
+    } catch (err) {
+        console.error("Error loading variants:", err);
     }
+
+    // 4. تنفيذ إخفاء اللودر فـ جميع الحالات
+    hideMyLoader();
 });
+
+// احتياط إضافي
+window.onload = function() {
+    const loader = document.querySelector('.loader');
+    if (loader && loader.style.display !== 'none') {
+        loader.style.display = 'none';
+    }
+};
 </script>
 </body>
 </html>
