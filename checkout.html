@@ -308,7 +308,6 @@ function toggleMobile(){document.getElementById('mobileToggle').classList.toggle
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. أمر إخفاء اللودر (هادي هي أهم حاجة باش ما تتبلوكاش)
     const hideMyLoader = () => {
         const loader = document.querySelector('.loader');
         if (loader) {
@@ -316,19 +315,12 @@ document.addEventListener('DOMContentLoaded', function() {
             setTimeout(() => { loader.style.display = 'none'; }, 500);
         }
     };
-
     try {
-        // 2. جلب البيانات
         const productData = localStorage.getItem('blox_checkout');
-        
-        if (productData) {
+                if (productData) {
             const product = JSON.parse(productData);
-            
-            // 3. التأكد من وجود options قبل العمل عليها
-            if (product && product.options) {
+                        if (product && product.options) {
                 const opts = product.options;
-
-                // إظهار المقاسات
                 if (opts.hasSize && opts.sizes && Array.isArray(opts.sizes)) {
                     const sBox = document.getElementById('size-box');
                     const sSelect = document.getElementById('p-size');
@@ -337,8 +329,6 @@ document.addEventListener('DOMContentLoaded', function() {
                         sSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
                     }
                 }
-
-                // إظهار الألوان
                 if (opts.hasColor && opts.colors && Array.isArray(opts.colors)) {
                     const cBox = document.getElementById('color-box');
                     const cSelect = document.getElementById('p-color');
@@ -352,12 +342,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } catch (err) {
         console.error("Error loading variants:", err);
     }
-
-    // 4. تنفيذ إخفاء اللودر فـ جميع الحالات
     hideMyLoader();
 });
-
-// احتياط إضافي
 window.onload = function() {
     const loader = document.querySelector('.loader');
     if (loader && loader.style.display !== 'none') {
