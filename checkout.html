@@ -306,49 +306,6 @@ document.body.style.overflow='hidden';
 function closeSuccess(){document.getElementById('successOverlay').classList.remove('active');document.body.style.overflow='auto';window.location.href='index.html'}
 function toggleMobile(){document.getElementById('mobileToggle').classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':'auto'}
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    try {
-        // 1. جلب البيانات من الذاكرة
-        var data = localStorage.getItem('blox_checkout') || localStorage.getItem('selectedProduct');
-        if (data) {
-            var p = JSON.parse(data);
-            if (p.options) {
-                // إظهار المقاس
-                if (p.options.hasSize && p.options.sizes) {
-                    var sBox = document.getElementById('size-box');
-                    var sSelect = document.getElementById('p-size');
-                    if (sBox && sSelect) {
-                        sBox.style.display = 'block';
-                        sSelect.innerHTML = p.options.sizes.map(function(s) {
-                            return '<option value="' + s + '">' + s + '</option>';
-                        }).join('');
-                    }
-                }
-                // إظهار اللون
-                if (p.options.hasColor && p.options.colors) {
-                    var cBox = document.getElementById('color-box');
-                    var cSelect = document.getElementById('p-color');
-                    if (cBox && cSelect) {
-                        cBox.style.display = 'block';
-                        cSelect.innerHTML = p.options.colors.map(function(c) {
-                            return '<option value="' + c + '">' + c + '</option>';
-                        }).join('');
-                    }
-                }
-            }
-        }
-    } catch (e) { console.log("Logic error:", e); }
-
-    // 2. حيد الشاشة الكحلة (Loader)
-    var loader = document.getElementById('loader') || document.querySelector('.loader');
-    if (loader) {
-        loader.style.opacity = '0';
-        setTimeout(function() {
-            loader.style.display = 'none';
-        }, 500);
-    }
-});
 </script>
 </body>
 </html>
