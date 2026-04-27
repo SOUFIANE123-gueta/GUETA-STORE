@@ -169,6 +169,16 @@ footer p{font-size:13px;color:var(--gray)}
 
 <form id="orderForm" onsubmit="submitOrder(event)">
 <div class="form-group">
+    <div id="dynamic-options" style="margin-bottom: 20px;">
+    <div id="size-box" style="display:none; margin-bottom: 15px;">
+        <label style="color: #ccc; display: block; margin-bottom: 5px; font-size: 14px;">اختار المقاس:</label>
+        <select id="p-size" style="width: 100%; padding: 12px; background: #1a1a1a; color: white; border: 1px solid #333; border-radius: 8px;"></select>
+    </div>
+    <div id="color-box" style="display:none;">
+        <label style="color: #ccc; display: block; margin-bottom: 5px; font-size: 14px;">اختار اللون:</label>
+        <select id="p-color" style="width: 100%; padding: 12px; background: #1a1a1a; color: white; border: 1px solid #333; border-radius: 8px;"></select>
+    </div>
+</div>
 <label class="form-label"><span class="label-icon">👤</span><span>الاسم والنسب</span><span class="required">*</span></label>
 <input type="text" class="form-input" id="fullName" placeholder="مثال: يوسف أمزيزي" required>
 <div class="form-error" id="nameError">أدخل الاسم الكامل ديالك</div>
@@ -306,6 +316,25 @@ document.body.style.overflow='hidden';
 function closeSuccess(){document.getElementById('successOverlay').classList.remove('active');document.body.style.overflow='auto';window.location.href='index.html'}
 function toggleMobile(){document.getElementById('mobileToggle').classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':'auto'}
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const selectedProduct = JSON.parse(localStorage.getItem('selectedProduct'));
+    if (selectedProduct && selectedProduct.options) {
+        const opts = selectedProduct.options;
+        if (opts.hasSize) {
+            const sizeBox = document.getElementById('size-box');
+            const sizeSelect = document.getElementById('p-size');
+            sizeBox.style.display = 'block';
+            sizeSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+        }
+        if (opts.hasColor) {
+            const colorBox = document.getElementById('color-box');
+            const colorSelect = document.getElementById('p-color');
+            colorBox.style.display = 'block';
+            colorSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+        }
+    }
+});
 </script>
 </body>
 </html>
