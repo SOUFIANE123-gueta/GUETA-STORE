@@ -308,53 +308,46 @@ function toggleMobile(){document.getElementById('mobileToggle').classList.toggle
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. أمر إجباري باش تحيد الشاشة الكحلة مهما وقع
-    const forceHideLoader = () => {
-        const loader = document.querySelector('.loader');
-        if (loader) {
-            loader.style.opacity = '0';
-            setTimeout(() => { loader.style.display = 'none'; }, 500);
-        }
-    };
-
     try {
-        // 2. كنجربو نجبدو المعلومات من كاع الصناديق الممكنة
-        const data = localStorage.getItem('selectedProduct') || localStorage.getItem('blox_checkout');
-        
+        // 1. جلب البيانات من الذاكرة
+        var data = localStorage.getItem('blox_checkout') || localStorage.getItem('selectedProduct');
         if (data) {
-            const product = JSON.parse(data);
-            
-            // 3. كنشوفو واش كاينين الـ Options
-            if (product && product.options) {
-                const opts = product.options;
-
+            var p = JSON.parse(data);
+            if (p.options) {
                 // إظهار المقاس
-                if (opts.hasSize && opts.sizes) {
-                    const sBox = document.getElementById('size-box');
-                    const sSelect = document.getElementById('p-size');
+                if (p.options.hasSize && p.options.sizes) {
+                    var sBox = document.getElementById('size-box');
+                    var sSelect = document.getElementById('p-size');
                     if (sBox && sSelect) {
                         sBox.style.display = 'block';
-                        sSelect.innerHTML = opts.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+                        sSelect.innerHTML = p.options.sizes.map(function(s) {
+                            return '<option value="' + s + '">' + s + '</option>';
+                        }).join('');
                     }
                 }
-
                 // إظهار اللون
-                if (opts.hasColor && opts.colors) {
-                    const cBox = document.getElementById('color-box');
-                    const cSelect = document.getElementById('p-color');
+                if (p.options.hasColor && p.options.colors) {
+                    var cBox = document.getElementById('color-box');
+                    var cSelect = document.getElementById('p-color');
                     if (cBox && cSelect) {
                         cBox.style.display = 'block';
-                        cSelect.innerHTML = opts.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+                        cSelect.innerHTML = p.options.colors.map(function(c) {
+                            return '<option value="' + c + '">' + c + '</option>';
+                        }).join('');
                     }
                 }
             }
         }
-    } catch (err) {
-        console.log("Error but don't freeze:", err);
-    }
+    } catch (e) { console.log("Logic error:", e); }
 
-    // 4. حيد اللودر فـ اللخر
-    forceHideLoader();
+    // 2. حيد الشاشة الكحلة (Loader)
+    var loader = document.getElementById('loader') || document.querySelector('.loader');
+    if (loader) {
+        loader.style.opacity = '0';
+        setTimeout(function() {
+            loader.style.display = 'none';
+        }, 500);
+    }
 });
 </script>
 </body>
