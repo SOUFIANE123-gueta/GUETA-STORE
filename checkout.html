@@ -306,6 +306,27 @@ document.body.style.overflow='hidden';
 function closeSuccess(){document.getElementById('successOverlay').classList.remove('active');document.body.style.overflow='auto';window.location.href='index.html'}
 function toggleMobile(){document.getElementById('mobileToggle').classList.toggle('active');document.getElementById('mobileMenu').classList.toggle('active');document.body.style.overflow=document.getElementById('mobileMenu').classList.contains('active')?'hidden':'auto'}
 function closeMobile(){document.getElementById('mobileToggle').classList.remove('active');document.getElementById('mobileMenu').classList.remove('active');document.body.style.overflow='auto'}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const productData = localStorage.getItem('blox_checkout');
+    if (productData) {
+        const product = JSON.parse(productData);
+        // 2. كنشوفو واش فيه Options
+        if (product.options) {
+            // إلا كان فيه المقاسات
+            if (product.options.hasSize && product.options.sizes) {
+                document.getElementById('size-box').style.display = 'block';
+                const sSelect = document.getElementById('p-size');
+                sSelect.innerHTML = product.options.sizes.map(s => `<option value="${s}">${s}</option>`).join('');
+            }
+            if (product.options.hasColor && product.options.colors) {
+                document.getElementById('color-box').style.display = 'block';
+                const cSelect = document.getElementById('p-color');
+                cSelect.innerHTML = product.options.colors.map(c => `<option value="${c}">${c}</option>`).join('');
+            }
+        }
+    }
+});
 </script>
 </body>
 </html>
