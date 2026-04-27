@@ -519,11 +519,10 @@ showToast(`تمت إضافة "${p.name}" للسلة ✓`);
 }
 
 function buyNow(id){
-const p=products.find(pr=>pr.id===id);
-localStorage.setItem('blox_checkout',JSON.stringify({id:p.id,name:p.name,price:p.price,oldPrice:p.oldPrice,image:p.image,qty:1}));
-window.location.href='checkout.html';
+const product = products.find(p => p.id === id);
+localStorage.setItem('selectedProduct', JSON.stringify(product));
+window.location.href = 'checkout.html';
 }
-
 function updateCart(){
 const total=cart.reduce((s,i)=>s+i.qty,0);
 const subtotal=cart.reduce((s,i)=>s+i.price*i.qty,0);
