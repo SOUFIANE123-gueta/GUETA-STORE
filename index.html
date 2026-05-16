@@ -90,20 +90,22 @@ nav{position:sticky;top:0;z-index:1000;padding:16px 48px;display:flex;justify-co
         margin: 6px 0 !important;
     }
 
-    .product-price-container {
-        display: flex !important;
-        flex-direction: row-reverse !important;
-        align-items: center !important;
-        justify-content: space-between !important;
-        gap: 4px !important;
-        margin-bottom: 8px !important;
-    }
+  .product-price-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 2px !important;
+    margin-bottom: 8px !important;
+}
 
-    .add-to-cart-btn {
-        width: 100% !important;
-        padding: 10px !important;
-        font-size: 13px !important;
-    }
+/* السطر لي فيه الثمن القديم والخصم */
+.price-box, [class*="price"] {
+    display: flex !important;
+    flex-direction: row !important; 
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 8px !important;
 }
 /* Hero */
 .hero{position:relative;overflow:hidden;padding:80px 48px;max-width:1400px;margin:0 auto}
