@@ -385,20 +385,20 @@ footer{padding:60px 48px 30px;max-width:1400px;margin:0 auto;border-top:1px soli
 
 <script>
 document.getElementById('myNewsletterForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // كيحبس الصفحة ماتشارجاش
+    e.preventDefault(); // كيحبس الصفحة ماتشارجاش واش تبقى خفيفة
     
     var emailInput = document.getElementById('newsletterEmail').value;
     var formData = new FormData();
     formData.append('email', emailInput);
 
-    // صيفط الداتا لـ Google Sheet فالحين
+    // صيفط الداتا لـ Google Sheet ديالك نيشان
     fetch('https://script.google.com/macros/s/AKfycbz3XJDZ7Ns7wd6EVTP3Ow2GR_mcX8wSKzg4xu1FdoPmcWa6KT-fTlgpwc3f0BWS3xLhCg/exec', {
         method: 'POST',
         body: formData,
-        mode: 'no-cors' // ضروري باش يتجاوز الحماية فـ GitHub
+        mode: 'no-cors' // ضروري باش يتجاوز الحماية فـ GitHubPages
     })
     .then(function() {
-        // هنا حط الكود لي كيطلع رسالة النجاح ديالك
+        // طلع رسالة النجاح الواعرة ديالك
         if (typeof showToast === "function") {
             showToast('🚨 تم الاشتراك بنجاح ! ✨');
         } else {
