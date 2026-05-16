@@ -392,7 +392,7 @@ document.getElementById('myNewsletterForm').addEventListener('submit', function(
     formData.append('email', emailInput);
 
     // صيفط الداتا لـ Google Sheet فالحين
-    fetch('https://script.google.com/macros/s/AKfycbz3XJDZ7Ns7wd6EVTP3Ow2GR_mcX8wSKzg4xu1FdoPmcWa6KT-fT1gpwc3f0BWS3xLhCg/exec', {
+    fetch('https://script.google.com/macros/s/AKfycbz3XJDZ7Ns7wd6EVTP3Ow2GR_mcX8wSKzg4xu1FdoPmcWa6KT-fTlgpwc3f0BWS3xLhCg/exec', {
         method: 'POST',
         body: formData,
         mode: 'no-cors' // ضروري باش يتجاوز الحماية فـ GitHub
