@@ -378,10 +378,39 @@ footer{padding:60px 48px 30px;max-width:1400px;margin:0 auto;border-top:1px soli
 <h2 class="newsletter-title">ابقَ على اطلاع</h2>
 <p class="newsletter-desc">اشترك للحصول على عروض حصرية و 10% خصم على طلبك الأول</p>
 </div>
-<form class="newsletter-form" action="https://script.google.com/macros/s/AKfycbz3XJDZ7Ns7wd6EVTP3Ow2GR_mcX8wSKzg4xu1FdoPmcWa6KT-fT1gpwc3f0BWS3xLhCg/exec" method="POST">
-    <input type="email" name="email" class="newsletter-input" placeholder="...أدخل بريدك الإلكتروني" required>
+<form class="newsletter-form" id="myNewsletterForm">
+    <input type="email" name="email" id="newsletterEmail" class="newsletter-input" placeholder="...أدخل بريدك الإلكتروني" required>
     <button type="submit" class="newsletter-btn">اشترك</button>
 </form>
+
+<script>
+document.getElementById('myNewsletterForm').addEventListener('submit', function(e) {
+    e.preventDefault(); // كيحبس الصفحة ماتشارجاش
+    
+    var emailInput = document.getElementById('newsletterEmail').value;
+    var formData = new FormData();
+    formData.append('email', emailInput);
+
+    // صيفط الداتا لـ Google Sheet فالحين
+    fetch('https://script.google.com/macros/s/AKfycbz3XJDZ7Ns7wd6EVTP3Ow2GR_mcX8wSKzg4xu1FdoPmcWa6KT-fT1gpwc3f0BWS3xLhCg/exec', {
+        method: 'POST',
+        body: formData,
+        mode: 'no-cors' // ضروري باش يتجاوز الحماية فـ GitHub
+    })
+    .then(function() {
+        // هنا حط الكود لي كيطلع رسالة النجاح ديالك
+        if (typeof showToast === "function") {
+            showToast('🚨 تم الاشتراك بنجاح ! ✨');
+        } else {
+            alert('🚨 تم الاشتراك بنجاح ! ✨');
+        }
+        document.getElementById('myNewsletterForm').reset(); // كيخوي الخانة مورا التسجيل
+    })
+    .catch(function(error) {
+        console.error('Error:', error);
+    });
+});
+</script>
   </div>
 </section>
 <!-- Footer -->
