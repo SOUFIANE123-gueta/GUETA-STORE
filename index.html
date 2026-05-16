@@ -95,17 +95,39 @@ nav{position:sticky;top:0;z-index:1000;padding:16px 48px;display:flex;justify-co
     flex-direction: column !important;
     align-items: center !important;
     justify-content: center !important;
-    gap: 2px !important;
+    gap: 4px !important;
+    margin-top: 6px !important;
     margin-bottom: 8px !important;
+    width: 100% !important;
 }
 
-/* السطر لي فيه الثمن القديم والخصم */
-.price-box, [class*="price"] {
+.product-price {
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--orange) !important;
+    direction: rtl !important;
+    text-align: center !important;
+}
+    
+.price-box {
     display: flex !important;
-    flex-direction: row !important; 
+    flex-direction: row !important;
     align-items: center !important;
     justify-content: center !important;
     gap: 8px !important;
+    direction: ltr !important;
+}
+
+.old-price {
+    font-size: 13px !important;
+    color: var(--gray) !important;
+    text-decoration: line-through !important;
+}
+
+.discount-badge {
+    font-size: 12px !important;
+    color: var(--danger) !important;
+    font-weight: 600 !important;
 }
 /* Hero */
 .hero{position:relative;overflow:hidden;padding:80px 48px;max-width:1400px;margin:0 auto}
