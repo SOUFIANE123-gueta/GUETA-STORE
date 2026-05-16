@@ -385,29 +385,29 @@ footer{padding:60px 48px 30px;max-width:1400px;margin:0 auto;border-top:1px soli
 
 <script>
 document.getElementById('myNewsletterForm').addEventListener('submit', function(e) {
-    e.preventDefault(); // كيحبس الصفحة ماتشارجاش واش تبقى خفيفة
+    e.preventDefault(); // حبس الصفحة ما تشرجاش
     
     var emailInput = document.getElementById('newsletterEmail').value;
     var formData = new FormData();
     formData.append('email', emailInput);
 
-    // صيفط الداتا لـ Google Sheet ديالك نيشان
+    // 1. طلع رسالة النجاح للكليان ف البلااااصة (بلا ما يتسنى السيرفر)
+    if (typeof showToast === "function") {
+        showToast('🚨 تم الاشتراك بنجاح ! ✨');
+    } else {
+        alert('🚨 تم الاشتراك بنجاح ! ✨');
+    }
+    
+    // خوي الخانة فوراً باش يحس الكليان أن العملية دازت
+    document.getElementById('myNewsletterForm').reset(); 
+
+    // 2. صيفط الداتا لـ Google Sheet ف الكواليس (Background)
     fetch('https://script.google.com/macros/s/AKfycbz3XJDZ7Ns7wd6EVTP3Ow2GR_mcX8wSKzg4xu1FdoPmcWa6KT-fTlgpwc3f0BWS3xLhCg/exec', {
         method: 'POST',
         body: formData,
-        mode: 'no-cors' // ضروري باش يتجاوز الحماية فـ GitHubPages
-    })
-    .then(function() {
-        // طلع رسالة النجاح الواعرة ديالك
-        if (typeof showToast === "function") {
-            showToast('🚨 تم الاشتراك بنجاح ! ✨');
-        } else {
-            alert('🚨 تم الاشتراك بنجاح ! ✨');
-        }
-        document.getElementById('myNewsletterForm').reset(); // كيخوي الخانة مورا التسجيل
-    })
-    .catch(function(error) {
-        console.error('Error:', error);
+        mode: 'no-cors' 
+    }).catch(function(error) {
+        console.error('Error sending in background:', error);
     });
 });
 </script>
