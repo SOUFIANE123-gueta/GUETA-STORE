@@ -378,13 +378,12 @@ footer{padding:60px 48px 30px;max-width:1400px;margin:0 auto;border-top:1px soli
 <h2 class="newsletter-title">ابقَ على اطلاع</h2>
 <p class="newsletter-desc">اشترك للحصول على عروض حصرية و 10% خصم على طلبك الأول</p>
 </div>
-<form class="newsletter-form" onsubmit="event.preventDefault();showToast('تم الاشتراك بنجاح! 🎉')">
-<input type="email" class="newsletter-input" placeholder="أدخل بريدك الإلكتروني..." required>
-<button type="submit" class="newsletter-btn">اشترك</button>
+<form class="newsletter-form" action="https://script.google.com/macros/s/AKfycbz3XJDZ7Ns7wd6EVTP3Ow2GR_mcX8wSKzg4xu1FdoPmcWa6KT-fT1gpwc3f0BWS3xLhCg/exec" method="POST">
+    <input type="email" name="email" class="newsletter-input" placeholder="...أدخل بريدك الإلكتروني" required>
+    <button type="submit" class="newsletter-btn">اشترك</button>
 </form>
-</div>
+  </div>
 </section>
-
 <!-- Footer -->
 <footer>
 <div class="footer-top">
